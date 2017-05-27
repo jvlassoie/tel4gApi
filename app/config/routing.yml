@@ -1,0 +1,15 @@
+api:
+    resource: '.'
+    type:     'api_platform'
+
+app:
+    resource: '@AppBundle/Action/'
+    type:     'annotation'
+
+book_special:
+    path: '/books/{id}/special'
+    methods:  ['PUT']
+    defaults:
+        _controller: 'AppBundle:Book:special'
+        _api_resource_class: 'AppBundle\Entity\Book'
+        _api_item_operation_name: 'special'
