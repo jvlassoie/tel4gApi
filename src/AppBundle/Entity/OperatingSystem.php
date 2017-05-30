@@ -8,12 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Operating_System
+ * OperatingSystem
  *
  * @ApiResource(attributes={"pagination_client_items_per_page"=true})
  * @ORM\Entity
  */
-class Operating_System
+class OperatingSystem
 {
     /**
      * @var int
@@ -49,7 +49,7 @@ class Operating_System
      *
      * @param string $name
      *
-     * @return Operating_System
+     * @return OperatingSystem
      */
     public function setName($name)
     {

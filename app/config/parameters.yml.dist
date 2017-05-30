@@ -16,6 +16,10 @@ parameters:
     mailer_password:   ~
 
     # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            dzzadazdzafdfzafzafz113758754864fyfyujfuvjy
 
     cors_allow_origin: http://localhost
+    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem'
+    jwt_public_key_path:  '%kernel.root_dir%/../var/jwt/public.pem'
+    jwt_key_pass_phrase: 'test'
+    jwt_token_ttl:        3600

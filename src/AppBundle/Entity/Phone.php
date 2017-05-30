@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use AppBundle\Entity\Brand;
-use AppBundle\Entity\Operating_System;
+use AppBundle\Entity\OperatingSystem;
 
 
 /**
@@ -126,7 +126,7 @@ class Phone
     
     /**
      * 
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Operating_System")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OperatingSystem")
      * @ORM\JoinColumn(name="os_id", referencedColumnName="id")
      * @Groups({"phone"})
      * 
@@ -435,11 +435,11 @@ class Phone
     /**
      * Set os
      *
-     * @param \AppBundle\Entity\Operating_System $os
+     * @param \AppBundle\Entity\OperatingSystem $os
      *
      * @return Phone
      */
-    public function setOs(\AppBundle\Entity\Operating_System $os = null)
+    public function setOs(\AppBundle\Entity\OperatingSystem $os = null)
     {
         $this->os = $os;
 
@@ -449,7 +449,7 @@ class Phone
     /**
      * Get os
      *
-     * @return \AppBundle\Entity\Operating_System
+     * @return \AppBundle\Entity\OperatingSystem
      */
     public function getOs()
     {
