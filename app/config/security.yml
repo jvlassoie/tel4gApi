@@ -12,32 +12,32 @@ security:
             
     firewalls:
         login:
-            pattern:  ^/api/login
+            pattern:  ^/login
             stateless: true
             anonymous: true
             provider: fos_userbundle
             form_login:
-                check_path: /api/login_check
+                check_path: /login_check
                 username_parameter: email
                 password_parameter: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-                require_previous_session: false
+                require_previous_session: false  
 
         main:
             pattern:   ^/
             provider: fos_userbundle
             stateless: true
+            anonymous: true
             guard:
                 authenticators: 
-                    - lexik_jwt_authentication.jwt_token_authenticator 
+                    - lexik_jwt_authentication.security.guard.jwt_token_authenticator
 
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
     access_control:
-        - { path: ^/api/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
-        
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/docs.html, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }        
