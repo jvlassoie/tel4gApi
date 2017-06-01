@@ -81,6 +81,7 @@ nelmio_cors:
         '^/': ~
 #api
 api_platform:
+    title: 'Tel4gAPI'
     collection:
         pagination:
             client_enabled: false

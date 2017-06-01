@@ -10,6 +10,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"user", "user-read"}},
  *     "denormalization_context"={"groups"={"user", "user-write"}}
@@ -17,6 +18,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class User extends BaseUser
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->addRole("ROLE_READER");
+        $this->setEnabled(true);
+    }
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -30,10 +39,30 @@ class User extends BaseUser
     protected $email;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user"})
+     * @ORM\Column(name="fullname", type="string", length=255, nullable=false)
+     * @Groups({"user-read"})
      */
     protected $fullname;
+
+    /**
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=false)
+     * @Groups({"user"})
+     */
+    protected $firstname;
+
+    /**
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=false)
+     * @Groups({"user"})
+     */
+    protected $lastname;
+
+    /**
+     * @var datetime
+     * 
+     * @ORM\Column(name="birthdate", type="datetime", nullable=true)
+     * @Groups({"user"})
+     */
+    protected $birthdate;
 
     /**
      * @Groups({"user-write"})
@@ -41,9 +70,26 @@ class User extends BaseUser
     protected $plainPassword;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user-read"})
      */
     protected $username;
+
+    /**
+    * @ORM\PrePersist
+    */
+    public function prePersist(){
+        $fn = (string) $this->getLastname();
+        $ln = (string) $this->getFirstname();
+        $mailAdress = (string) $this->getEmail();
+        $this->setFullname($ln.' '.$fn);
+        $this->setUsername($mailAdress);
+    }
+
+    public function setEmail($email)
+    {
+        parent::setEmail($email);
+        parent::setUsername($email);
+    }
 
     public function setFullname($fullname)
     {
@@ -59,5 +105,77 @@ class User extends BaseUser
     public function isUser(UserInterface $user = null)
     {
         return $user instanceof self && $user->id === $this->id;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     *
+     * @return User
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     *
+     * @return User
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set birthdate
+     *
+     * @param \DateTime $birthdate
+     *
+     * @return User
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    /**
+     * Get birthdate
+     *
+     * @return \DateTime
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
     }
 }
