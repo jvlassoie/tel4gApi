@@ -11,9 +11,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @ApiResource(attributes={
+ * @ApiResource(
+ *  attributes={
  *     "normalization_context"={"groups"={"user", "user-read"}},
- *     "denormalization_context"={"groups"={"user", "user-write"}}
+ *     "denormalization_context"={"groups"={"user", "user-write"}},
+ *     "filters"={"user.search"}
  * })
  */
 class User extends BaseUser
