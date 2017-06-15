@@ -6,7 +6,8 @@ Todo List :
 
 1. Cloner le depot sur son poste.
 2. Créer le host virtuel "tel4gapi.local".
-3. ```
+3. 
+```
 #!vhost
 
 <VirtualHost *:80>
