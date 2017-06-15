@@ -24,6 +24,10 @@ Todo List :
  </VirtualHost>
 ```
 * Modifier le chemin du  Directory et DocumentRoot si le projet n'est dans celle indiquée.
+* Lancer la commande : 
+```
+	composer update
+```
 * Les informations du parameters.yml se trouvent dans le parameters.yml.dist.
 * Si le host virtuelle ('autre repository') pour le côté client n'est pas celui indiqué dans la todo list vous devez allez dans le parameters.yml est notée :
 
