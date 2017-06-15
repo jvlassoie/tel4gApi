@@ -32,6 +32,3 @@ Todo List :
 cors_allow_origin: 'mondomaine.local'
 
 ```
-=======
-* les informations du parameters.yml se trouvent dans le parameters.yml.dist
->>>>>>> 96e82b50844526922460a9257f008bfc20d28664
