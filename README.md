@@ -23,5 +23,5 @@ Todo List :
  	</Directory>
  </VirtualHost>
 ```
-3. Modifier le chemin du  Directory et DocumentRoot si le projet n'est dans celle indiquée.
-4. les informations du parameters.yml se trouvent dans le parameters.yml.dist
+* Modifier le chemin du  Directory et DocumentRoot si le projet n'est dans celle indiquée.
+* les informations du parameters.yml se trouvent dans le parameters.yml.dist
