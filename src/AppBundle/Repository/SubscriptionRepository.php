@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
-
+use Doctrine\ORM\EntityManager;
 /**
  * SubscriptionRepository
  *
@@ -10,4 +10,13 @@ namespace AppBundle\Repository;
  */
 class SubscriptionRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function __construct(){
+	parent::__construct();	
+	$this->em = $this->getContainer()->get('doctrine');
+	$this->qd = $this->em->createQueryBuilder();
+	}
+
+	public function createSubcription(){
+		
+	}
 }
