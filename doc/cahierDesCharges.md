@@ -13,7 +13,7 @@ Cette manière de concevoir les applications permet une portabilité d'un projet
 
 ##Server
 	
-	- Nginx et php-fpm
+	- Apache
 
 ##Framework(library)
 	- Symfony (twig,doctrine)
