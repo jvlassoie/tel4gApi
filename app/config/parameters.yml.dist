@@ -2,24 +2,29 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host:     database
-    database_port:     ~
-    database_name:     api_platform
-    database_user:     api_platform
-    database_password: api_platform
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: api_tel
+    database_user: root
+    database_password: null
+
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
-
+    mailer_user: jv.lassoie@gmail.com
+    mailer_host: 127.0.0.1
+    mailer_password: null
+    
     # A secret key that's used to generate certain security-related tokens
     secret:            dzzadazdzafdfzafzafz113758754864fyfyujfuvjy
 
-    cors_allow_origin: http://localhost
+    secret: kjqoijsqdjszfozajkpof5887652686192tfza
+    cors_allow_origin: 'http://local.tel4g'
     jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem'
     jwt_public_key_path:  '%kernel.root_dir%/../var/jwt/public.pem'
     jwt_key_pass_phrase: 'test'
-    jwt_token_ttl:        3600
+    jwt_token_ttl:        100000
+    # This file is auto-generated during the composer install
+    upload_image: '%kernel.root_dir%/../web/image'

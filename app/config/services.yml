@@ -7,3 +7,7 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    user.search_filter:
+      parent:    'api_platform.doctrine.orm.search_filter'
+      arguments: [ { id: 'exact', username: 'exact', email: 'exact' } ]
+      tags:      [ { name: 'api_platform.filter', id: 'user.search' } ]

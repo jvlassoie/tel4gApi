@@ -8,17 +8,25 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use AppBundle\Entity\User;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class CustomController extends Controller
 {
 	/**
-     * @Route("/tester", name="test")
+     * @Route("/upload", name="test")
      * @Method({"GET", "POST", "OPTIONS"})
      */
 	public function uploadAction(Request $request)
 	{
 		header('Access-Control-Allow-Origin: http://local.tel4g');  
 
+				print_r($_POST);
+				print_r($_FILES);
+			die();
 		if (!empty($_FILES)&&!empty($_POST)){
 			$nameImg = uniqid();
 			$upload_image = $this->container->getParameter('upload_image');
@@ -32,4 +40,24 @@ class CustomController extends Controller
 		return new Response('error',500);
 
 	}
+
+	/**
+     * @Route("/checkmailexist/{email}", name="checkmailexist")
+     * @Method({"GET", "POST", "OPTIONS"})
+     */
+	public function verifEmail($email){
+		/*		header('Access-Control-Allow-Origin: http://local.tel4g'); */
+		$repo = $this->getDoctrine()->getRepository('AppBundle:User');
+		$emailBool = $repo->findByEmail($email);
+		/*$encoders = array(new XmlEncoder(), new JsonEncoder());
+		$normalizers = array(new ObjectNormalizer());
+		$serializer = new Serializer($normalizers, $encoders);
+		return new Response($serializer->serialize($emailBool,'json'),200);*/
+		if (!empty($emailBool)) {
+			return new Response(json_encode(['result' => true]),200);
+		}else{	
+			return new Response(json_encode(['result' => false]),200);
+		}
+	}
+
 }
