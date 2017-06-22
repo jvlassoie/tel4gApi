@@ -35,10 +35,10 @@ cors_allow_origin: 'mondomaine.local'
 
 ```
 =======
-> **1.** Cloner le depot sur son poste.
-> **2.** Créer le host virtuel "tel4gapi.local".
+> * Cloner le depot sur son poste.
+> * Créer le host virtuel "tel4gapi.local".
 > `<VirtualHost *:80>
-  ServerName tel4gApi.local
+  ServerName tel4gApi.local   
   DocumentRoot C:/wamp64/www/projectTel4gAPI/web
   RewriteEngine On
     RewriteCond %{HTTP:Authorization} ^(.)
