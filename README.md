@@ -55,4 +55,3 @@ cors_allow_origin: 'mondomaine.local'
 Cahier des charges :
 -------
 <a href="doc/cahierDesCharges.md">lien cahier</a>
-[Link Text](doc/cahierDesCharges.md)
