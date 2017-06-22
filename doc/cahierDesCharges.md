@@ -35,9 +35,7 @@ De grandes Sociétés utilise ce système notamment  "Amazon".
 
 ###Server
 
-Nginx a été conçu pour gérer plus facilement les sites a fort trafique,
-en Comparaison a Apache qui lui interprète le code html en plus du PHP ce qui ralentit légèrement l'interprétation.
-Celui-ci 
+Apache car facile a utiliser.
 
 ###Front
 
