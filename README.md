@@ -51,3 +51,7 @@ cors_allow_origin: 'mondomaine.local'
  * Modifier le chemin du  Directory et DocumentRoot si le projet n'est dans celle indiquée.
  * les informations du parameters.yml se trouvent dans le parameters.yml.dist
  * Importer la bdd du fichier sql  dans le dossier dump
+
+Cahier des charges :
+-------
+<a href="doc/cahierDesCharges.md">lien cahier</a>
