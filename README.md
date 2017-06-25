@@ -4,6 +4,7 @@
 Todo List :
 -------
 * Cloner le depot sur son poste.
+* Vérifier que php soit >= 7.0.1
 * Créer le host virtuel "tel4gapi.local".
  
 ```
