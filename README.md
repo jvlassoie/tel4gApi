@@ -11,11 +11,11 @@ Todo List :
 
 <VirtualHost *:80>
     ServerName tel4gApi.local
-  DocumentRoot C:/wamp64/www/projectTel4gAPI/web
+  DocumentRoot C:/wamp64/www/projecttel4gapi/web
   RewriteEngine On 
         RewriteCond %{HTTP:Authorization} ^(.)
      RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
-  <Directory  "C:/wamp64/www/projectTel4gAPI/web">
+  <Directory  "C:/wamp64/www/projecttel4gapi/web">
           Options Indexes FollowSymLinks
          AllowOverride All
           Require all granted
@@ -25,7 +25,7 @@ Todo List :
 * Modifier le chemin du  Directory et DocumentRoot si le projet n'est dans celle indiquée.
 * Lancer la commande : 
 ```
-  composer update
+  composer install
 ```
 * Les informations du parameters.yml se trouvent dans le parameters.yml.dist.
 * Si le host virtuelle ('autre repository') pour le côté client n'est pas celui indiqué dans la todo list vous devez allez dans le parameters.yml est notée :
