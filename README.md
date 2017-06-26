@@ -53,8 +53,11 @@ Todo List :
 cors_allow_origin: 'mondomaine.local'
 
 ```
-
- * Importer la bdd du fichier sql  dans le dossier dump
+* nettoyer le cache avec la commande : 
+```
+php bin/console c:c --env=prod
+```
+* Importer la bdd du fichier sql  dans le dossier dump
 
 Cahier des charges :
 -------

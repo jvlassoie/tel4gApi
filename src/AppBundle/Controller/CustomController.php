@@ -23,38 +23,31 @@ class CustomController extends Controller
      */
 	public function uploadAction(Request $request)
 	{
-/*		header('Access-Control-Allow-Origin: http://local.tel4g');
-*/
-if (!empty($_FILES)|| !empty($_POST)){
-	if (!empty($_FILES)){	
-		$nameImg = uniqid();
-		$upload_image = $this->container->getParameter('upload_image');
-		$ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-		move_uploaded_file(
-			$_FILES['file']['tmp_name'], 
-			$upload_image.'/'.$nameImg.'.'.$ext
-			);
-		return new Response(json_encode(['nameImg' => $nameImg.'.'.$ext]),201);
-	}else{
-		return new Response(json_encode($request->getContent(),true),201);
-	}
-}
-return new Response('error',500);
+		if (!empty($_FILES)|| !empty($_POST)){
+			if (!empty($_FILES)){	
+				$nameImg = uniqid();
+				$upload_image = $this->container->getParameter('upload_image');
+				$ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+				move_uploaded_file(
+					$_FILES['file']['tmp_name'], 
+					$upload_image.'/'.$nameImg.'.'.$ext
+					);
+				return new Response(json_encode(['nameImg' => $nameImg.'.'.$ext]),201);
+			}else{
+				return new Response(json_encode($request->getContent(),true),201);
+			}
+		}
+		return new Response('error',500);
 
-}
+	}
 
 	/**
      * @Route("/checkmailexist/{email}", name="checkmailexist")
      * @Method({"GET", "POST", "OPTIONS"})
      */
 	public function verifEmail($email){
-		/*		header('Access-Control-Allow-Origin: http://local.tel4g'); */
 		$repo = $this->getDoctrine()->getRepository('AppBundle:User');
 		$emailBool = $repo->findByEmail($email);
-		/*$encoders = array(new XmlEncoder(), new JsonEncoder());
-		$normalizers = array(new ObjectNormalizer());
-		$serializer = new Serializer($normalizers, $encoders);
-		return new Response($serializer->serialize($emailBool,'json'),200);*/
 		if (!empty($emailBool)) {
 			return new Response(json_encode(['result' => true]),200);
 		}else{	
