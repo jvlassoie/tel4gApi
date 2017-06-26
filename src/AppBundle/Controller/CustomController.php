@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-
+use AppBundle\Repository\SubscriptionInfoRepository;
 
 class CustomController extends Controller
 {
@@ -73,6 +73,15 @@ return new Response('error',500);
 		}else{
 			return new Response(json_encode(['id' => null]),500);
 		}
+	}
+
+	/**
+     * @Route("/subinfoid", name="subinfoid")
+     * @Method({"GET", "POST", "OPTIONS"})
+     */
+	public function subinfoId(){
+		$repo = $this->getDoctrine()->getRepository('AppBundle:SubscriptionInfo');
+		return new Response(json_encode(['id' => $repo->findLast()->getId()]),200);
 	}
 
 }

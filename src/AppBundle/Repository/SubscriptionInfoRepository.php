@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class SubscriptionInfoRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findLast() {
+		$qb = $this->createQueryBuilder('s');
+		$qb->setMaxResults( 1 );
+		$qb->orderBy('s.id', 'DESC');
+		return $qb->getQuery()->getSingleResult();
+	}
 }

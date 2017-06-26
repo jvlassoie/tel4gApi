@@ -4,12 +4,13 @@ namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * SubscriptionInfo
  *
  * @ApiResource(attributes={"pagination_client_items_per_page"=true})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SubscriptionInfoRepository")
  */
 class SubscriptionInfo
 {
@@ -19,6 +20,7 @@ class SubscriptionInfo
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"user"})
      */
     private $id;
 
