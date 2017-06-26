@@ -23,7 +23,7 @@ Todo List :
   </Directory>
  </VirtualHost>
 ```
-* Dans le cas où il y aurait un probleme de cross-domaine une autre configuration du server est possible mais nécessite l'activation du module 'headers_module'.(ligne a décommenter dans le http.conf.
+* Dans le cas où il y aurait un probleme de cross-domaine une autre configuration du server est possible mais nécessite l'activation du module 'headers_module'.(ligne a décommenter dans le http.conf).
 ```
 <VirtualHost *:80>
 	ServerName tel4gApi.local
