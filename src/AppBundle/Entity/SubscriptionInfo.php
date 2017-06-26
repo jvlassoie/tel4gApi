@@ -32,7 +32,7 @@ class SubscriptionInfo
     /**
      * @var string
      *
-     * @ORM\Column(name="bic", type="string", length=8)
+     * @ORM\Column(name="bic", type="string", length=11)
      */
     private $bic;
 
@@ -63,7 +63,6 @@ class SubscriptionInfo
      * @ORM\Column(name="identityCard", type="string", length=255)
      */
        private $identityCard;
-
 
     /**
      * Get id

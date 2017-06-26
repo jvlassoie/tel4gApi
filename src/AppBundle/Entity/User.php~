@@ -75,7 +75,6 @@ class User extends BaseUser
      * @Groups({"user-read"})
      */
     protected $username;
-
     /**
      * 
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubscriptionInfo")
@@ -190,27 +189,4 @@ class User extends BaseUser
         return $this->birthdate;
     }
 
-    /**
-     * Set subscriptionInfo
-     *
-     * @param \AppBundle\Entity\SubscriptionInfo $subscriptionInfo
-     *
-     * @return User
-     */
-    public function setSubscriptionInfo(\AppBundle\Entity\SubscriptionInfo $subscriptionInfo = null)
-    {
-        $this->subscriptionInfo = $subscriptionInfo;
-
-        return $this;
-    }
-
-    /**
-     * Get subscriptionInfo
-     *
-     * @return \AppBundle\Entity\SubscriptionInfo
-     */
-    public function getSubscriptionInfo()
-    {
-        return $this->subscriptionInfo;
-    }
 }

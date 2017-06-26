@@ -75,7 +75,6 @@ class User extends BaseUser
      * @Groups({"user-read"})
      */
     protected $username;
-
     /**
      * 
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubscriptionInfo")
@@ -189,6 +188,7 @@ class User extends BaseUser
     {
         return $this->birthdate;
     }
+
 
     /**
      * Set subscriptionInfo
